@@ -30,10 +30,15 @@ Reusable Playwright and TypeScript project structure for the PM Tool QA suite.
 ```text
 config/       Environment configuration
 fixtures/     Shared Playwright fixtures
+locators/     Optional shared locator definitions
 pages/        Page Object classes
+reports/      Generated test reports
+screenshots/  Generated screenshots
 test-data/    Reusable test data and builders
 tests/        Playwright test specifications
+traces/       Generated Playwright traces
 utils/        Shared helper functions
+videos/       Generated test recordings
 ```
 
 Keep selectors inside their related Page Object unless the team agrees on a separate locator layer.
@@ -45,9 +50,11 @@ The project is divided by responsibility so tests remain easy to understand, reu
 - `tests/` contains the test scenarios and expected results. Tests should describe user behavior without including large amounts of setup or page interaction code.
 - `pages/` contains Page Object classes. Each class keeps the selectors and actions for one application page in one place, so UI changes can be updated without editing every test.
 - `fixtures/` contains shared Playwright setup, such as authenticated sessions, page objects, test users, or API clients. This avoids repeating the same setup in multiple tests.
+- `locators/` is available when the team chooses to maintain selectors separately. Otherwise, selectors should stay inside the related Page Object.
 - `test-data/` contains reusable test inputs and data builders. Keeping test data separate makes scenarios easier to read and allows data to be changed without changing test logic.
 - `config/` contains environment settings such as application and API URLs. This allows the same tests to run against local, QA, staging, or other environments.
 - `utils/` contains small reusable helper functions that do not belong to a specific page or test.
+- `reports/`, `screenshots/`, `traces/`, and `videos/` contain generated test artifacts. Their `.gitkeep` files preserve the folders in Git, while generated contents remain ignored.
 
 This separation also makes team ownership clearer, reduces duplicated code, and helps code reviews focus on the part of the test suite that changed.
 

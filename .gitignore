@@ -1,8 +1,15 @@
 node_modules/
 playwright-report/
 test-results/
-traces/
-reports/
+
+reports/*
+screenshots/*
+traces/*
+videos/*
+!reports/.gitkeep
+!screenshots/.gitkeep
+!traces/.gitkeep
+!videos/.gitkeep
 
 .env
 .env.*
